@@ -1,3 +1,5 @@
+mypackage\DeleteServlet.class
 com\mycompany\salonbookingapp\resources\JakartaEE10Resource.class
 com\mycompany\salonbookingapp\JakartaRestConfiguration.class
 mypackage\BookingServlet.class
+mypackage\UpdateServlet.class
