@@ -9,50 +9,100 @@
             background: linear-gradient(to right, #ffe6f0, #ffccdd);
             font-family: 'Cairo', sans-serif;
             direction: rtl;
-            text-align: center;
-            padding: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
         }
+
         .card {
             background-color: #fff0f5;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 0 15px #f8c6d8;
-            width: 60%;
-            margin: auto;
+            padding: 40px 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 25px rgba(248, 198, 216, 0.7);
+            width: 90%;
+            max-width: 500px;
+            animation: popUp 1s ease;
+            text-align: center;
         }
-        h2 {
+
+        @keyframes popUp {
+            0% {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .icon {
+            font-size: 50px;
             color: #e91e63;
-            font-size: 30px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            animation: sparkle 2s infinite ease-in-out;
         }
-        p {
-            color: #555;
-            font-size: 18px;
+
+        @keyframes sparkle {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        h2 {
+            color: #d63384;
+            font-size: 28px;
             margin-bottom: 10px;
         }
+
+        p {
+            color: #444;
+            font-size: 17px;
+            margin: 10px 0;
+        }
+
+        .btn-container {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
         .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 20px;
+            display: block;
+            padding: 12px 25px;
             background-color: #e91e63;
             color: white;
             text-decoration: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-weight: bold;
             font-size: 16px;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
         }
+
         .btn:hover {
-            background-color: #d81b60;
+            background-color: #c2185b;
+            transform: scale(1.05);
+        }
+
+        .btn:active {
+            transform: scale(0.95);
         }
     </style>
 </head>
 <body>
     <div class="card">
-        <h2>✨ تم حجز الموعد بنجاح!</h2>
+        <div class="icon">💖</div>
+        <h2>تم الحجز بنجاح!</h2>
         <p>شكراً لاختيارك <strong>صالون الجمال</strong> 💅</p>
-        <p>سنكون في خدمتك في الموعد المحدد بكل سرور 🌸</p>
-        <a href="index.jsp" class="btn">🔙 العودة إلى صفحة الحجز</a>
+        <p>نتطلع لخدمتك بكل حب واهتمام 🌸</p>
+        <div class="btn-container">
+            <a href="index.jsp" class="btn">🔄 حجز موعد جديد</a>
+            <a href="appointments.jsp" class="btn">📋 عرض المواعيد</a>
+           
+        </div>
     </div>
 </body>
 </html>

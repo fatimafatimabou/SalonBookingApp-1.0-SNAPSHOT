@@ -1,4 +1,14 @@
 <%@ page import="java.sql.*" %>
+<%@ page import="jakarta.servlet.http.*, jakarta.servlet.*" %>
+
+<%
+    // 🔐 كود الحماية: التأكد من أن المستخدم قام بتسجيل الدخول
+    if (session == null || session.getAttribute("user") == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="ar">
@@ -85,6 +95,7 @@
 </head>
 <body>
     <a href="index.jsp" class="btn">🔙 الرجوع إلى صفحة الحجز</a>
+    <a href="logout.jsp" class="btn">🚪 تسجيل الخروج</a>
     <h2 style="color:#d63384;">📋 قائمة المواعيد</h2>
     <table>
         <tr>

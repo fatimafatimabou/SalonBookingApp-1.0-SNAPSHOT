@@ -18,7 +18,6 @@ public class BookingServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
 
-        // استقبال البيانات من الفورم
         String name = request.getParameter("name");
         String phone = request.getParameter("phone");
         String service = request.getParameter("service");
@@ -35,14 +34,12 @@ public class BookingServlet extends HttpServlet {
             Date parsedDate = inputFormat.parse(dateStr);
             String formattedDate = dbFormat.format(parsedDate);
 
-            int stylistId = Integer.parseInt(stylistIdStr); // تحويل المعرف إلى رقم
+            int stylistId = Integer.parseInt(stylistIdStr);
 
-            // الاتصال بقاعدة البيانات
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/salon", "root", "");
 
-            // إدخال الموعد في قاعدة البيانات
             String sql = "INSERT INTO appointments (name, phone, service, date, time, stylist_id) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, name);
@@ -55,7 +52,8 @@ public class BookingServlet extends HttpServlet {
             int rows = stmt.executeUpdate();
 
             if (rows > 0) {
-                response.sendRedirect("appointments.jsp");
+                // ✅ التوجيه إلى صفحة النجاح
+                response.sendRedirect("success.jsp");
             } else {
                 out.println("<h3>فشل في تسجيل الحجز. يرجى المحاولة مرة أخرى.</h3>");
             }
